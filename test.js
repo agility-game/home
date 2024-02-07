@@ -1,5 +1,5 @@
 // test.js
-const chai = require('chai');
+import * as chai from 'chai';
 const assert = chai.assert;
 
 describe('files', function () {
