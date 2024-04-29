@@ -1,6 +1,6 @@
 # .gitlab-ci.yml
 default:
-  image: node:19
+  image: node:20
 
 stages:
   - test
