@@ -1,4 +1,5 @@
 ARG IMAGE_REPOSITORY
+ARG IMAGE_REPOSITORY_DIVISION
 # development environment: pull official base image for node development
 FROM ${IMAGE_REPOSITORY}${IMAGE_REPOSITORY_DIVISION}node:13.12.0-alpine as build
 
