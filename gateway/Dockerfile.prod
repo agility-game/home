@@ -12,4 +12,20 @@ ARG PROXY_PORT
 ENV HTTP_PROXY="http://${PROXY_USER}:${PROXY_PASSWORD}@${PROXY_FQDN}:${PROXY_PORT}"
 ENV HTTPS_PROXY="http://${PROXY_USER}:${PROXY_PASSWORD}@${PROXY_FQDN}:${PROXY_PORT}"
 
-# More ...
+# add app
+COPY . ./
+
+# production environment
+FROM ${IMAGE_REPOSITORY}/nginx:stable-alpine
+
+# install build
+COPY --from=build /app/build /usr/share/nginx/html
+
+# if using React Router
+COPY nginx/nginx.conf.production /etc/nginx/conf.d/default.conf
+
+# expose port
+EXPOSE 80
+
+# start app
+CMD ["nginx", "-g", "daemon off;"]

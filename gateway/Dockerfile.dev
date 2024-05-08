@@ -15,8 +15,8 @@ ENV HTTPS_PROXY="http://${PROXY_USER}:${PROXY_PASSWORD}@${PROXY_FQDN}:${PROXY_PO
 # set working directory
 WORKDIR /app
 
-# add `/app/node_modules/.bin` to $PATH
-ENV PATH /app/node_modules/.bin:$PATH
+# add app
+COPY . ./
 
 # production environment
 FROM ${IMAGE_REPOSITORY}${IMAGE_REPOSITORY_DIVISION}nginx:stable-alpine
